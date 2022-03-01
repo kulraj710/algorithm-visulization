@@ -40,10 +40,15 @@ const InsertionSort = () => {
         <Preferances setElement={setElement}/>
         <button onClick={in_sort}>Start your sort</button>
         <div>
-            {result.map((item, index) => {
-                
-                return( <span key={index}>{item} </span>)
-            })}
+            Randomly generated array : [
+                {result.map((item, index) => {        
+                return( 
+                <span key={index}>
+                    {item}
+                    {(index === result.length - 1) ? null : " , "} 
+                </span>)
+            })} 
+            ]
             
         </div>
         Chart is below
