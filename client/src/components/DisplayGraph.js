@@ -1,8 +1,11 @@
 import React from 'react'
-import Chart from './Chart'
+import Chart from '../charts/Chart'
 import Preferances from './Preferances'
+import InsertionSort from '../sort-algo/InsertionSort'
+import bubbleSort from '../sort-algo/bubbleSort'
+import Navbar from '../layout/Navbar'
 
-const InsertionSort = () => {
+const DisplayGraph = () => {
     let array = []
     const [element, setElement] = React.useState(0)
     for (let i = 0; i < element; i++) {
@@ -10,35 +13,23 @@ const InsertionSort = () => {
         array.push(k)
     }
 
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-      }
+ 
 
     const [result, setResult] = React.useState(array);
     const [current, setCurrent] = React.useState(0);
 
-    async function in_sort(){
-        for(let i = 1; i < array.length; i++){
-            let key = array[i];
-            setCurrent(i)
-            let j = i - 1;
-            await delay(70)
-            while(j >= 0 && array[j] > key){
-                array[j + 1] = array[j];
-                setCurrent(j + 1)
-               await delay(70)
-                j--;
-            }
-            array[j + 1] = key;
-            setResult([...array]);
-        }
+    const runAlgoOnClick = () => {
+        
+        // InsertionSort(array, setCurrent, setResult)
+        bubbleSort(array, setCurrent, setResult)
     }
 
   return (
     <div>
-        insertion_sort
+        <Navbar/>
+        <div style={{marginBottom : '82px'}}></div>
         <Preferances setElement={setElement}/>
-        <button onClick={in_sort}>Start your sort</button>
+        <button onClick={runAlgoOnClick}>Start your sort</button>
         <div>
             Randomly generated array : [
                 {result.map((item, index) => {        
@@ -57,4 +48,4 @@ const InsertionSort = () => {
   )
 }
 
-export default InsertionSort
+export default DisplayGraph

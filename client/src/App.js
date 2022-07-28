@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Selection from './components/Selection';
-import InsertionSort from './components/InsertionSort';
+import InsertionSort from './components/DisplayGraph';
 
 function App() {
   return(
