@@ -19,12 +19,22 @@ const DisplayGraph = () => {
     const [result, setResult] = React.useState(array);
     const [current, setCurrent] = React.useState(0);
     const [showChart, setShowChart] = React.useState(false);
+    const [choice, setChoice] = React.useState('insertion');
 
 
     const runAlgoOnClick = () => {
         setShowChart(true)
-        // InsertionSort(array, setCurrent, setResult)
-        bubbleSort(array, setCurrent, setResult)
+
+        switch (choice) {
+            case 'insertion':
+                InsertionSort(array, setCurrent, setResult)
+                break;
+            case 'bubble':
+                bubbleSort(array, setCurrent, setResult)
+                break;
+            default:
+                break;
+        }
     }
 
     const buttonStyles = {
@@ -34,7 +44,7 @@ const DisplayGraph = () => {
         borderRadius : "12px",
         backgroundColor : "#82CA9D",
         color : 'white',
-        border : '1px solid lighgrey',
+        border : '1px solid lightgrey',
         cursor : "pointer",
     }
     const spanStyles = {
@@ -46,7 +56,7 @@ const DisplayGraph = () => {
 
   return (
     <div>
-        <Navbar/>
+        <Navbar choice={choice} setChoice={setChoice}/>
         <div style={{marginBottom : '82px'}}></div>
         <Preferances setElement={setElement}>
             <ScrollIntoView selector="#chart">    

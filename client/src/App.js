@@ -7,7 +7,7 @@ function App() {
   <div>
         <BrowserRouter>
       <Routes>
-        <Route path="/insertion_sort" element={<InsertionSort />} />
+        <Route path="/sort" element={<InsertionSort />} />
         <Route path="/" element={<Selection />} />
       </Routes>
     </BrowserRouter>
